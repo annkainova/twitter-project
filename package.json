@@ -10,8 +10,10 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "chai": "^5.1.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-mocha": "^10.3.0"
+    "eslint-plugin-mocha": "^10.3.0",
+    "mocha": "^10.3.0"
   }
 }

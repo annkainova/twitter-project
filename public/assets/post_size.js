@@ -1,4 +1,4 @@
-function postSize(text) {
+export default function postSize(text) {
   const domens = [
     '.com',
     '.net',
@@ -31,5 +31,3 @@ function postSize(text) {
 
   return countCharcters;
 }
-
-export default postSize();
