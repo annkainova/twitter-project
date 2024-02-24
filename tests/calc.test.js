@@ -1,80 +1,77 @@
+/* eslint-disable func-names */
 import { assert } from 'chai';
 import postSize from '../public/assets/post_size.js';
 
-describe('Function to check post size calculation', function () {
-  it('without links', function () {
+describe('Функция проверки расчета размера поста', function () {
+  it('без ссылок', function () {
     const expectedResult = 12;
-    const result = postSize('Hello everyone!');
+    const result = postSize('Всем привет!');
     assert.equal(expectedResult, result);
   });
 
-  it('should correctly calculate the size of text with one link starting with http/https', function () {
+  it('должен правильно подсчитать размер текста с одной ссылкой, которая начинается с http/https', function () {
     const expectedResult = 8;
-    const result = postSize('Hello! https://github.com');
+    const result = postSize('Привет! https://github.com');
     assert.equal(expectedResult, result);
   });
 
-  it('should correctly calculate the size of text with one link without protocol', function () {
+  it('должен правильно подсчитать размер текста с одной ссылкой без протокола', function () {
     const expectedResult = 8;
-    const result = postSize('Hello! burtovoy.org');
+    const result = postSize('Привет! burtovoy.org');
     assert.equal(expectedResult, result);
   });
 
-  it('should correctly calculate the size of text with multiple links with protocols', function () {
+  it('должен правильно подсчитать размер текста с несколькими ссылками с протоколами', function () {
     const expectedResult = 37;
-    const result = postSize(
-      'Visit https://example.com and www.example.org for information'
-    );
+    const result = postSize('Посетите https://example.com и www.example.org для получения информации');
     assert.equal(expectedResult, result);
   });
 
-  it('should correctly calculate the size of text with multiple links without protocol', function () {
+  it('должен правильно подсчитать размер текста с несколькими ссылками без протокола', function () {
     const expectedResult = 37;
-    const result = postSize(
-      'Visit example.com and example.org for information'
-    );
+    const result = postSize('Посетите example.com и example.org для получения информации');
     assert.equal(expectedResult, result);
   });
 
-  it('should ignore link with subdomain', function () {
+  it('должен игнорировать ссылку с поддоменом', function () {
     const expectedResult = 34;
-    const result = postSize('Visit blog.example.com for information');
+    const result = postSize('Посетите blog.example.com для получения информации');
     assert.equal(expectedResult, result);
   });
 
-  it('should return 0 for empty text', function () {
+  it('должен вернуть 0 для пустого текста', function () {
     const expectedResult = 0;
     const result = postSize('');
     assert.equal(expectedResult, result);
   });
 
-  it('should correctly calculate the size of text with newline characters', function () {
+  it('должен правильно подсчитать размер текста с символами новой строки', function () {
     const expectedResult = 11;
-    const result = postSize('Hello,\nworld!');
+    const result = postSize('Привет,\nмир!');
     assert.equal(expectedResult, result);
   });
 
-  it('should correctly calculate the size of text with special characters', function () {
+  it('должен правильно подсчитать размер текста с специальными символами', function () {
     const expectedResult = 21;
-    const result = postSize('Hello, world! @#%^&*()');
+    const result = postSize('Привет, мир! @#%^&*()');
     assert.equal(expectedResult, result);
   });
 
-  it('should correctly calculate the size of text containing numbers', function () {
+  it('должен правильно подсчитать размер текста, содержащего цифры', function () {
     const expectedResult = 18;
-    const result = postSize('12345 Hello, world!');
+    const result = postSize('12345 Привет, мир!');
     assert.equal(expectedResult, result);
   });
 
-  it('should correctly calculate the size of text with spaces at the beginning and end', function () {
+  it('должен правильно подсчитать размер текста с пробелами в начале и в конце', function () {
     const expectedResult = 16;
-    const result = postSize('  Hello, world!  ');
+    const result = postSize('  Привет, мир!  ');
     assert.equal(expectedResult, result);
   });
 
-  it('should correctly calculate the size of text with emojis', function () {
+  it('должен правильно подсчитать размер текста с эмодзи', function () {
     const expectedResult = 15;
-    const result = postSize('Hello, world! 😊');
+    const result = postSize('Привет, мир! 😊');
     assert.equal(expectedResult, result);
   });
 });
