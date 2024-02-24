@@ -14,7 +14,9 @@ export default function postSize(text) {
 
   let thisIsLink;
   let countCharcters = 0;
-  const words = text.split(/(\s+)/);
+
+  const cleanedText = text.replace(/\n/g, '');
+  const words = cleanedText.split(/(\s+)/);
 
   words.forEach((word) => {
     thisIsLink = false;
