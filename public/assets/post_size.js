@@ -1,17 +1,17 @@
-export default function postSize(text) {
-  const domens = [
-    '.com',
-    '.net',
-    '.org',
-    '.ru',
-    '.de',
-    '.uk',
-    '.cn',
-    '.info',
-    '.nl',
-    '.br',
-  ];
+export const domens = [
+  '.com',
+  '.net',
+  '.org',
+  '.ru',
+  '.de',
+  '.uk',
+  '.cn',
+  '.info',
+  '.nl',
+  '.br',
+];
 
+export function postSize(text) {
   let thisIsLink;
   let countCharcters = 0;
 
@@ -21,7 +21,7 @@ export default function postSize(text) {
   words.forEach((word) => {
     thisIsLink = false;
     domens.forEach((domen) => {
-      if (word.endsWith(domen)) {
+      if (word.includes(domen)) {
         thisIsLink = true;
       }
     });
