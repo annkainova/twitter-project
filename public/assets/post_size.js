@@ -11,7 +11,7 @@ export const domens = [
   '.br',
 ];
 
-export function postSize(text) {
+export default function postSize(text) {
   let thisIsLink;
   let countCharcters = 0;
 

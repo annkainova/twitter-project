@@ -12,7 +12,7 @@ export default function linkToElement(text) {
     domens.forEach((domen) => {
       if (word.includes(domen)) {
         thisIsLink = true;
-        linkWithTag = `<a>href="${word}"${word}</a>`;
+        linkWithTag = `<a href="${word}">${word}</a>`;
       }
     });
     if (thisIsLink) {
